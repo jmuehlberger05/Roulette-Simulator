@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Roulette_Simulator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="640" Width="800" Background="#FFEEEEEE">
+        Title="MainWindow" Height="640" Width="900" Background="#FFEEEEEE">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="79*" />
@@ -46,6 +46,7 @@
             </Border.Effect>
             <Grid Margin="12">
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.5*" />
                     <ColumnDefinition Width="1*" />
                     <ColumnDefinition Width="1*" />
                     <ColumnDefinition Width="1*" />
@@ -58,6 +59,7 @@
                     <ColumnDefinition Width="1*" />
                     <ColumnDefinition Width="1*" />
                     <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1.5*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*" />
@@ -67,75 +69,82 @@
                     <RowDefinition Height="1*" />
                 </Grid.RowDefinitions>
 
+                <!--Null-->
+                <Button Click="Bet_Click" Margin="2" Grid.Column="0" Grid.Row ="0" Grid.RowSpan="3" Content="0" Background="#FF02B100" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
+
                 <!-- First 4 Rows -->
-                <Button Margin="2" Grid.Column="0" Grid.Row="0" Content="3" Background="Red" Foreground="White" FontFamily="Rockwell" FontSize="20" />
-                <Button Margin="2" Grid.Column="0" Grid.Row="1" Content="2" Background="Black" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
-                <Button Margin="2" Grid.Column="0" Grid.Row="2" Content="1" Background="Red" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
+                <Button Click="Bet_Click" Margin="2" Grid.Column="1" Grid.Row="0" Content="3" Background="Red" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
+                <Button Click="Bet_Click" Margin="2" Grid.Column="1" Grid.Row="1" Content="2" Background="Black" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
+                <Button Click="Bet_Click" Margin="2" Grid.Column="1" Grid.Row="2" Content="1" Background="Red" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
 
-                <Button Margin="2" Grid.Column="1" Grid.Row="0" Content="6" Foreground="White" Background="Black" FontFamily="Rockwell" FontSize="20" />
-                <Button Margin="2" Grid.Column="1" Grid.Row="1" Content="5" Background="Red" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
-                <Button Margin="2" Grid.Column="1" Grid.Row="2" Content="4" Background="Black" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
+                <Button Click="Bet_Click" Margin="2" Grid.Column="2" Grid.Row="0" Content="6" Foreground="White" Background="Black" FontFamily="Rockwell" FontSize="20" />
+                <Button Click="Bet_Click" Margin="2" Grid.Column="2" Grid.Row="1" Content="5" Background="Red" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
+                <Button Click="Bet_Click" Margin="2" Grid.Column="2" Grid.Row="2" Content="4" Background="Black" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
 
-                <Button Margin="2" Grid.Column="2" Grid.Row="0" Content="9" Background="Red" Foreground="White" FontFamily="Rockwell" FontSize="20" />
-                <Button Margin="2" Grid.Column="2" Grid.Row="1" Content="8" Background="Black" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
-                <Button Margin="2" Grid.Column="2" Grid.Row="2" Content="7" Background="Red" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
+                <Button Click="Bet_Click" Margin="2" Grid.Column="3" Grid.Row="0" Content="9" Background="Red" Foreground="White" FontFamily="Rockwell" FontSize="20" />
+                <Button Click="Bet_Click" Margin="2" Grid.Column="3" Grid.Row="1" Content="8" Background="Black" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
+                <Button Click="Bet_Click" Margin="2" Grid.Column="3" Grid.Row="2" Content="7" Background="Red" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
 
-                <Button Margin="2" Grid.Column="3" Grid.Row="0" Content="12" Background="Red" Foreground="White" FontFamily="Rockwell" FontSize="20" />
-                <Button Margin="2" Grid.Column="3" Grid.Row="1" Content="11" Background="Black" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
-                <Button Margin="2" Grid.Column="3" Grid.Row="2" Content="10" Background="Black" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
+                <Button Click="Bet_Click" Margin="2" Grid.Column="4" Grid.Row="0" Content="12" Background="Red" Foreground="White" FontFamily="Rockwell" FontSize="20" />
+                <Button Click="Bet_Click" Margin="2" Grid.Column="4" Grid.Row="1" Content="11" Background="Black" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
+                <Button Click="Bet_Click" Margin="2" Grid.Column="4" Grid.Row="2" Content="10" Background="Black" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
 
-                <Button Margin="2" Grid.Column="0" Grid.Row ="3" Grid.ColumnSpan="4" Content="First 12" Background="#FF02B100" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
-                <Button Margin="2" Grid.Column="0" Grid.Row ="4" Grid.ColumnSpan="2" Content="1 to 18" Background="#FF02B100" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
-                <Button Margin="2" Grid.Column="2" Grid.Row ="4" Grid.ColumnSpan="2" Content="Even" Background="#FF02B100" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
+                <Button Click="Bet_Click" Margin="2" Grid.Column="1" Grid.Row ="3" Grid.ColumnSpan="4" Content="First 12" Background="#FF02B100" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
+                <Button Click="Bet_Click" Margin="2" Grid.Column="1" Grid.Row ="4" Grid.ColumnSpan="2" Content="1 to 18" Background="#FF02B100" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
+                <Button Click="Bet_Click" Margin="2" Grid.Column="3" Grid.Row ="4" Grid.ColumnSpan="2" Content="Even" Background="#FF02B100" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
 
                 <!-- Second 4 Rows -->
-                <Button Margin="2" Grid.Column="4" Grid.Row="0" Content="15" Background="Black" Foreground="White" FontFamily="Rockwell" FontSize="20" />
-                <Button Margin="2" Grid.Column="4" Grid.Row="1" Content="14" Background="red" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
-                <Button Margin="2" Grid.Column="4" Grid.Row="2" Content="13" Background="Black" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
+                <Button Click="Bet_Click" Margin="2" Grid.Column="5" Grid.Row="0" Content="15" Background="Black" Foreground="White" FontFamily="Rockwell" FontSize="20" />
+                <Button Click="Bet_Click" Margin="2" Grid.Column="5" Grid.Row="1" Content="14" Background="red" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
+                <Button Click="Bet_Click" Margin="2" Grid.Column="5" Grid.Row="2" Content="13" Background="Black" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
 
-                <Button Margin="2" Grid.Column="5" Grid.Row="0" Content="18" Foreground="White" Background="red" FontFamily="Rockwell" FontSize="20" />
-                <Button Margin="2" Grid.Column="5" Grid.Row="1" Content="17" Background="black" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
-                <Button Margin="2" Grid.Column="5" Grid.Row="2" Content="16" Background="red" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
+                <Button Click="Bet_Click" Margin="2" Grid.Column="6" Grid.Row="0" Content="18" Foreground="White" Background="red" FontFamily="Rockwell" FontSize="20" />
+                <Button Click="Bet_Click" Margin="2" Grid.Column="6" Grid.Row="1" Content="17" Background="black" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
+                <Button Click="Bet_Click" Margin="2" Grid.Column="6" Grid.Row="2" Content="16" Background="red" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
 
-                <Button Margin="2" Grid.Column="6" Grid.Row="0" Content="21" Background="red" Foreground="White" FontFamily="Rockwell" FontSize="20" />
-                <Button Margin="2" Grid.Column="6" Grid.Row="1" Content="20" Background="black" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
-                <Button Margin="2" Grid.Column="6" Grid.Row="2" Content="19" Background="red" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
+                <Button Click="Bet_Click" Margin="2" Grid.Column="7" Grid.Row="0" Content="21" Background="red" Foreground="White" FontFamily="Rockwell" FontSize="20" />
+                <Button Click="Bet_Click" Margin="2" Grid.Column="7" Grid.Row="1" Content="20" Background="black" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
+                <Button Click="Bet_Click" Margin="2" Grid.Column="7" Grid.Row="2" Content="19" Background="red" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
 
-                <Button Margin="2" Grid.Column="7" Grid.Row="0" Content="24" Background="black" Foreground="White" FontFamily="Rockwell" FontSize="20" />
-                <Button Margin="2" Grid.Column="7" Grid.Row="1" Content="23" Background="red" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
-                <Button Margin="2" Grid.Column="7" Grid.Row="2" Content="22" Background="Black" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
+                <Button Click="Bet_Click" Margin="2" Grid.Column="8" Grid.Row="0" Content="24" Background="black" Foreground="White" FontFamily="Rockwell" FontSize="20" />
+                <Button Click="Bet_Click" Margin="2" Grid.Column="8" Grid.Row="1" Content="23" Background="red" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
+                <Button Click="Bet_Click" Margin="2" Grid.Column="8" Grid.Row="2" Content="22" Background="Black" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
 
-                <Button Margin="2" Grid.Column="4" Grid.Row ="3" Grid.ColumnSpan="4" Content="Second 12" Background="#FF02B100" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
-                <Button Margin="2" Grid.Column="4" Grid.Row ="4" Grid.ColumnSpan="2" Content="Red" Background="Red" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
-                <Button Margin="2" Grid.Column="6" Grid.Row ="4" Grid.ColumnSpan="2" Content="Black" Background="Black" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
+                <Button Click="Bet_Click" Margin="2" Grid.Column="5" Grid.Row ="3" Grid.ColumnSpan="4" Content="Second 12" Background="#FF02B100" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
+                <Button Click="Bet_Click" Margin="2" Grid.Column="5" Grid.Row ="4" Grid.ColumnSpan="2" Content="Red" Background="Red" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
+                <Button Click="Bet_Click" Margin="2" Grid.Column="7" Grid.Row ="4" Grid.ColumnSpan="2" Content="Black" Background="Black" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
 
                 <!-- Third 4 Rows -->
-                <Button Margin="2" Grid.Column="8" Grid.Row="0" Content="27" Background="Red" Foreground="White" FontFamily="Rockwell" FontSize="20" />
-                <Button Margin="2" Grid.Column="8" Grid.Row="1" Content="26" Background="Black" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
-                <Button Margin="2" Grid.Column="8" Grid.Row="2" Content="25" Background="Red" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
+                <Button Click="Bet_Click" Margin="2" Grid.Column="9" Grid.Row="0" Content="27" Background="Red" Foreground="White" FontFamily="Rockwell" FontSize="20" />
+                <Button Click="Bet_Click" Margin="2" Grid.Column="9" Grid.Row="1" Content="26" Background="Black" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
+                <Button Click="Bet_Click" Margin="2" Grid.Column="9" Grid.Row="2" Content="25" Background="Red" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
 
-                <Button Margin="2" Grid.Column="9" Grid.Row="0" Content="30" Background="red" Foreground="White" FontFamily="Rockwell" FontSize="20" />
-                <Button Margin="2" Grid.Column="9" Grid.Row="1" Content="29" Background="black" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
-                <Button Margin="2" Grid.Column="9" Grid.Row="2" Content="28" Background="black" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
+                <Button Click="Bet_Click" Margin="2" Grid.Column="10" Grid.Row="0" Content="30" Background="red" Foreground="White" FontFamily="Rockwell" FontSize="20" />
+                <Button Click="Bet_Click" Margin="2" Grid.Column="10" Grid.Row="1" Content="29" Background="black" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
+                <Button Click="Bet_Click" Margin="2" Grid.Column="10" Grid.Row="2" Content="28" Background="black" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
 
-                <Button Margin="2" Grid.Column="10" Grid.Row="0" Content="33" Background="black" Foreground="White" FontFamily="Rockwell" FontSize="20" />
-                <Button Margin="2" Grid.Column="10" Grid.Row="1" Content="32" Background="red" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
-                <Button Margin="2" Grid.Column="10" Grid.Row="2" Content="31" Background="black" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
+                <Button Click="Bet_Click" Margin="2" Grid.Column="11" Grid.Row="0" Content="33" Background="black" Foreground="White" FontFamily="Rockwell" FontSize="20" />
+                <Button Click="Bet_Click" Margin="2" Grid.Column="11" Grid.Row="1" Content="32" Background="red" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
+                <Button Click="Bet_Click" Margin="2" Grid.Column="11" Grid.Row="2" Content="31" Background="black" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
 
-                <Button Margin="2" Grid.Column="11" Grid.Row="0" Content="36" Background="Red" Foreground="White" FontFamily="Rockwell" FontSize="20" />
-                <Button Margin="2" Grid.Column="11" Grid.Row="1" Content="35" Background="Black" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
-                <Button Margin="2" Grid.Column="11" Grid.Row="2" Content="34" Background="red" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
+                <Button Click="Bet_Click" Margin="2" Grid.Column="12" Grid.Row="0" Content="36" Background="Red" Foreground="White" FontFamily="Rockwell" FontSize="20" />
+                <Button Click="Bet_Click" Margin="2" Grid.Column="12" Grid.Row="1" Content="35" Background="Black" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
+                <Button Click="Bet_Click" Margin="2" Grid.Column="12" Grid.Row="2" Content="34" Background="red" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
 
-                <Button Margin="2" Grid.Column="8" Grid.Row ="3" Grid.ColumnSpan="4" Content="Third 12" Background="#FF02B100" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
-                <Button Margin="2" Grid.Column="8" Grid.Row ="4" Grid.ColumnSpan="2" Content="Odd" Background="#FF02B100" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
-                <Button Margin="2" Grid.Column="10" Grid.Row ="4" Grid.ColumnSpan="2" Content="19 to 36" Background="#FF02B100" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
-
+                <Button Click="Bet_Click" Margin="2" Grid.Column="9" Grid.Row ="3" Grid.ColumnSpan="4" Content="Third 12" Background="#FF02B100" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
+                <Button Click="Bet_Click" Margin="2" Grid.Column="9" Grid.Row ="4" Grid.ColumnSpan="2" Content="Odd" Background="#FF02B100" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
+                <Button Click="Bet_Click" Margin="2" Grid.Column="11" Grid.Row ="4" Grid.ColumnSpan="2" Content="19 to 36" Background="#FF02B100" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
+                
+                <!--Rows-->
+                <Button Click="Bet_Click" Margin="2" Grid.Column="13" Grid.Row="0" Content="2 to 1" Name="Line1" Background="#FF02B100" Foreground="White" FontFamily="Rockwell" FontSize="20" />
+                <Button Click="Bet_Click" Margin="2" Grid.Column="13" Grid.Row="1" Content="2 to 1" Name="Line2" Background="#FF02B100" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
+                <Button Click="Bet_Click" Margin="2" Grid.Column="13" Grid.Row="2" Content="2 to 1" Name="Line3" Background="#FF02B100" Foreground="White" FontFamily="Rockwell" FontSize="20"/>
 
             </Grid>
         </Border>
         
         <!--Start Button-->
-        <Button Grid.Column="2" Grid.Row="1" Margin="5,5,10,5" Background="white" BorderBrush="#ff00ee00" FontFamily="Rockwell" FontSize="16">
+        <Button Click="Simulate" Grid.Column="2" Grid.Row="1" Margin="5,5,10,5" Background="white" BorderBrush="#ff00ee00" FontFamily="Rockwell" FontSize="16">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="16" />
@@ -158,7 +167,7 @@
                     <RowDefinition Height="1*" />
                 </Grid.RowDefinitions>
                 <Label Margin="5,5,0,0" FontFamily="Rockwell" FontSize="16" Opacity="0.5">Einsatz</Label>
-                <ListBox Grid.Row="1" BorderBrush="#00000000" Margin="5,0,5,5" d:ItemsSource="{d:SampleData ItemCount=5}" FontFamily="Rockwell" FontSize="14"></ListBox>
+                <ListBox x:Name="lb_BetsList" Grid.Row="1" BorderBrush="#00000000" Margin="5,0,5,5" d:ItemsSource="{d:SampleData ItemCount=5}" FontFamily="Rockwell" FontSize="14"></ListBox>
             </Grid>
             
         </Border>
@@ -174,7 +183,7 @@
                     <RowDefinition Height="1*" />
                 </Grid.RowDefinitions>
                 <Label Margin="5,5,0,0" FontFamily="Rockwell" FontSize="16" Opacity="0.5">Gewinn</Label>
-                <Label Grid.Row="2" Margin="5,0,5,5" FontFamily="Rockwell" FontSize="30" Opacity="0.5" Foreground="#FF2CA321" Content="0,00€"/>
+                <Label Name="winLabel" Grid.Row="2" Margin="5,0,5,5" FontFamily="Rockwell" FontSize="30" Opacity="1" Foreground="#FF2CA321" Content="0,00€"/>
             </Grid>
             <!--<Label>0.00€</Label>-->
         </Border>
