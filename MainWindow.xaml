@@ -200,6 +200,7 @@
             <Grid Name="graphic" VerticalAlignment="Bottom" Margin="15">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
+                    <RowDefinition Height="135.1"/>
                     <RowDefinition Height="24"/>
                 </Grid.RowDefinitions>
                 <Label Name="deskript_label" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontFamily="Rockwell" FontSize="16" Opacity="0.5">Press 'Statistik' to start!</Label>

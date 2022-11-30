@@ -98,7 +98,8 @@ namespace Roulette_Simulator
 
             return winNumber;
         }
-        
+
+        //Method to calculate the Spread for the Numbers
         public Dictionary<int, double> CalculateNumberspread(double resolution)
         {
             Dictionary<int, double> amount = new Dictionary<int, double>();

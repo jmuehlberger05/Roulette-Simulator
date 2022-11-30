@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Shapes;
 
 namespace Roulette_Simulator
@@ -113,7 +114,7 @@ namespace Roulette_Simulator
         {
             for (int i = 0; i < 37; i++)
             {
-                // Add a new Row
+                // Add a new Column
                 var ColumnDef = new ColumnDefinition();
                 ColumnDef.Width = new GridLength(1, GridUnitType.Star);
                 graphic.ColumnDefinitions.Add(ColumnDef);
@@ -127,7 +128,8 @@ namespace Roulette_Simulator
                     Fill = fill,
                     Height = spread[i] * 5000,
                     Margin = new Thickness(2, 2, 2, 2),
-                    VerticalAlignment = VerticalAlignment.Bottom
+                    VerticalAlignment = VerticalAlignment.Bottom,
+                    ToolTip = spread[i] * 100 + "%"
                 };
                 var lb = new Label()
                 {
@@ -139,15 +141,32 @@ namespace Roulette_Simulator
                 //select the right column and row to put in
                 Grid.SetColumn(Rect, i);
                 Grid.SetRow(Rect, 0);
+                Grid.SetRowSpan(Rect, 2);
 
                 Grid.SetColumn(lb, i);
-                Grid.SetRow(lb, 1);
+                Grid.SetRow(lb, 2);
 
                 graphic.Children.Add(Rect);
 
                 // Only add the Label ever second Column
                 if (i % 2 == 0) { graphic.Children.Add(lb); }
             }
+            //var fill = new SolidColorBrush();
+            //fill = Brushes.Black;
+
+            var Line = new Rectangle()
+            {
+                Fill = Brushes.Black,
+                Height = 1,
+                Margin = new Thickness(2, 2, 2, 2),
+                VerticalAlignment = VerticalAlignment.Bottom,
+                ToolTip = "2.7% - Perfect Distribution"
+            };
+
+            Grid.SetColumn(Line, 0);
+            Grid.SetRow(Line, 0);
+            Grid.SetColumnSpan(Line, 37);
+            graphic.Children.Add(Line);
         }
 
         // Start the simulation
