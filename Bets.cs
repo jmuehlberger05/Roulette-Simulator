@@ -163,8 +163,7 @@ namespace Roulette_Simulator
                 isupperhalf = true;
             }
         }
-
-
+        
         //calculates the profit for every item in the dictionary
         private double calcNumber()
         {
@@ -183,7 +182,7 @@ namespace Roulette_Simulator
                 }
 
                 //check for rows
-                if (bet.Key == "Line1" || bet.Key == "Line2" || bet.Key == "Line3")
+                else if (bet.Key == "Line1" || bet.Key == "Line2" || bet.Key == "Line3")
                 {
                     if (bet.Key == row)
                     {
@@ -193,7 +192,7 @@ namespace Roulette_Simulator
                 }
 
                 // check for color
-                if (bet.Key == "Red" || bet.Key == "Black")
+                else if (bet.Key == "Red" || bet.Key == "Black")
                 {
                     if (bet.Key == color)
                     {
@@ -203,7 +202,7 @@ namespace Roulette_Simulator
                 }
 
                 //check for even / odd
-                if (bet.Key == "Even" || bet.Key == "Odd")
+                else if (bet.Key == "Even" || bet.Key == "Odd")
                 {
                     if ((bet.Key == "Even" && (iseven)) || (bet.Key == "Odd" && (!iseven)))
                     {
@@ -213,7 +212,7 @@ namespace Roulette_Simulator
                 }
 
                 //check isupperhalf
-                if (bet.Key == "1 to 18" || bet.Key == "19 to 36")
+                else if (bet.Key == "1 to 18" || bet.Key == "19 to 36")
                 {
                     if ((bet.Key == "1 to 18" && (!isupperhalf)) || (bet.Key == "19 to 36" && (isupperhalf)))
                     {
@@ -222,7 +221,15 @@ namespace Roulette_Simulator
                     else { output += bet.Value * -1; }
                 }
 
-
+                //check if number
+                else if (Double.TryParse(bet.Key, out double number))
+                {
+                    if (number == this.number)
+                    {
+                        output += bet.Value * 35;
+                    }
+                    else { output += bet.Value * -1; }
+                }
             }
             return output;
         }
