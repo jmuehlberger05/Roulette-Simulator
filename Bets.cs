@@ -1,22 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Media;
 
 namespace Roulette_Simulator
 {
     class Bets
     {
-        private Dictionary<string, double> bets = new Dictionary<string, double>();
-
-        public Dictionary<string, double> InnerDict { get { return bets; } }
-
+        /* Constructor */
+        
         // No special things happening in the constructor
         public Bets() { }
+
+
+        /* Properties */
+
+        //Dictionaries to Store the Bets
+        public Dictionary<string, double> InnerDict { get { return bets; } }
+        private Dictionary<string, double> bets = new Dictionary<string, double>();
+
+        //Definitions of red and black numbers
+        public int[] red_numbers = { 1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36 };
+        public int[] black_numbers = { 2, 4, 6, 8, 10, 11, 13, 15, 17, 20, 22, 24, 26, 28, 29, 31, 33, 35 };
 
         // all private & public properties that can occur
         public int Number { get { return number; } }
@@ -36,6 +40,9 @@ namespace Roulette_Simulator
 
         public bool Isupperhalf { get { return isupperhalf; } }
         private bool isupperhalf = false;
+
+        
+        /* Methods */
 
         //Method to add Bets to the Dictionary
         public void Bet(string field, double amount)
@@ -65,8 +72,11 @@ namespace Roulette_Simulator
             Random rnd = new Random();
             number = rnd.Next(0, 37);
             //number = 0;
+        }
 
-            // Check properties if numer != 0
+        // Check properties if number != 0
+        public void CheckProperties()
+        {
             if (number > 0)
             {
                 checkColor();
@@ -88,13 +98,60 @@ namespace Roulette_Simulator
 
             return winNumber;
         }
+        
+        public Dictionary<int, double> CalculateNumberspread(double resolution)
+        {
+            Dictionary<int, double> amount = new Dictionary<int, double>();
+            Dictionary<int, double> spread = new Dictionary<int, double>();
+            amount.Clear();
+            
+            for (int i = 0; i < 37; i++)
+            {
+                amount.Add(i, 0);
+            }
+            for (int j = 0; j < (int)resolution; j++)
+            {
+                Spin();
+                amount[number]++;
+            }
+            for (int i = 0; i < 37; i++)
+            {
+                spread.Add(i, amount[i] / (int)resolution);
+            }
+            return spread;
+        }
 
-        // operations to get the Bets' properties
-        private int[] red_numbers = { 1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36 };
-        private int[] black_numbers = { 2, 4, 6, 8, 10, 13, 15, 17, 20, 22, 24, 26, 28, 29, 31, 33, 35 };
+        //Method to get the colorBrush of the number
+        public SolidColorBrush checkColor(int Numbercheck) {
+            SolidColorBrush output = Brushes.Transparent;
+            foreach (int redNum in red_numbers)
+            {
+                if (Numbercheck == redNum)
+                {
+                    output = Brushes.Red;
+                }
+            }
+            foreach (int blackNum in black_numbers)
+            {
+                if (Numbercheck == blackNum)
+                {
+                    output = Brushes.Black;
+                }
+            }
+            if (Numbercheck == 0)
+            {
+                output = Brushes.LimeGreen;
+            }
+            return output;
+        }
+        
+        
+        /* Internal operations to get the Bets' properties */
 
-        private void checkColor() {
-            foreach (int redNum in red_numbers) {
+        private void checkColor()
+        {
+            foreach (int redNum in red_numbers)
+            {
                 if (number == redNum)
                 {
                     color = "Red";
@@ -114,15 +171,17 @@ namespace Roulette_Simulator
         }
 
         private void checkRow()
-        { 
+        {
 
             if (number % 3 == 0)
             {
                 row = "Line1";
-            }else if (number % 3 == 1)
+            }
+            else if (number % 3 == 1)
             {
                 row = "Line3";
-            }else if (number % 3 == 2)
+            }
+            else if (number % 3 == 2)
             {
                 row = "Line2";
             }
@@ -138,7 +197,7 @@ namespace Roulette_Simulator
             {
                 third = "Second 12";
             }
-            else if (number >24 && number < 37)
+            else if (number > 24 && number < 37)
             {
                 third = "Third 12";
             }
@@ -163,7 +222,7 @@ namespace Roulette_Simulator
                 isupperhalf = true;
             }
         }
-        
+
         //calculates the profit for every item in the dictionary
         private double calcNumber()
         {
