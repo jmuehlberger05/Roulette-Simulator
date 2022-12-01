@@ -231,7 +231,8 @@
                     <RowDefinition Height="38px" />
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
-                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
                 <Label Name="description1" Margin="5,5,0,0" FontFamily="Rockwell" FontSize="16" Opacity="0.5">What to do</Label>
                 <TextBlock Grid.Row="1" Margin="10,5,10,10" FontFamily="Rockwell" FontSize="16" Opacity="1" TextWrapping="WrapWithOverflow">
@@ -239,6 +240,9 @@
                 </TextBlock>
                 <Slider Name="resolution_slider" IsSnapToTickEnabled="True" Ticks="200, 1000, 5000, 10000, 200000" HorizontalAlignment="Left" Margin="10" Grid.Row="2" VerticalAlignment="Top" Width="140" Maximum="20000" Value="1000" Minimum="200" ValueChanged="updateSlider"/>
                 <Label Name="Slider_label" Grid.Row="3" FontFamily="Rockwell" FontSize="14" HorizontalAlignment="Right" Margin="0 0 12 0 ">x = 1000</Label>
+                <TextBlock Grid.Row="4" Margin="10,5,10,10" FontFamily="Rockwell" FontSize="16" Opacity="1" TextWrapping="WrapWithOverflow" VerticalAlignment="Top">
+                    The perfect Distribution would be 2,7% per Number.
+                </TextBlock>
             </Grid>
         </Border>
     </Grid>

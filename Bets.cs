@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Media;
 
 namespace Roulette_Simulator
@@ -8,8 +9,11 @@ namespace Roulette_Simulator
     {
         /* Constructor */
         
-        // No special things happening in the constructor
-        public Bets() { }
+        // Fill the Colors Dctionary on start
+        public Bets() 
+        {
+            fillColorDict();
+        }
 
 
         /* Properties */
@@ -18,9 +22,8 @@ namespace Roulette_Simulator
         public Dictionary<string, double> InnerDict { get { return bets; } }
         private Dictionary<string, double> bets = new Dictionary<string, double>();
 
-        //Definitions of red and black numbers
-        public int[] red_numbers = { 1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36 };
-        public int[] black_numbers = { 2, 4, 6, 8, 10, 11, 13, 15, 17, 20, 22, 24, 26, 28, 29, 31, 33, 35 };
+        //Dictionary to store the colors
+        public Dictionary<int, string> colors = new Dictionary<int, string>();
 
         // all private & public properties that can occur
         public int Number { get { return number; } }
@@ -125,21 +128,15 @@ namespace Roulette_Simulator
         //Method to get the colorBrush of the number
         public SolidColorBrush checkColor(int Numbercheck) {
             SolidColorBrush output = Brushes.Transparent;
-            foreach (int redNum in red_numbers)
+            if (colors[Numbercheck] == "Red")
             {
-                if (Numbercheck == redNum)
-                {
-                    output = Brushes.Red;
-                }
+                output = Brushes.Red;
             }
-            foreach (int blackNum in black_numbers)
+            else if (colors[Numbercheck] == "Black")
             {
-                if (Numbercheck == blackNum)
-                {
-                    output = Brushes.Black;
-                }
+                output = Brushes.Black;
             }
-            if (Numbercheck == 0)
+            else if (colors[Numbercheck] == "Green")
             {
                 output = Brushes.LimeGreen;
             }
@@ -151,24 +148,7 @@ namespace Roulette_Simulator
 
         private void checkColor()
         {
-            foreach (int redNum in red_numbers)
-            {
-                if (number == redNum)
-                {
-                    color = "Red";
-                }
-            }
-            foreach (int blackNum in black_numbers)
-            {
-                if (number == blackNum)
-                {
-                    color = "Black";
-                }
-            }
-            if (number == 0)
-            {
-                color = "Green";
-            }
+            color = colors[number];
         }
 
         private void checkRow()
@@ -292,6 +272,37 @@ namespace Roulette_Simulator
                 }
             }
             return output;
+        }
+
+        // internal void to fill the colors dictionary with the roulette colors
+        private void fillColorDict()
+        {
+            int[] red_numbers = { 1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36 };
+            int[] black_numbers = { 2, 4, 6, 8, 10, 11, 13, 15, 17, 20, 22, 24, 26, 28, 29, 31, 33, 35 };
+            for (int i = 0; i < 37; i++)
+            {
+                if (i == 0)
+                {
+                    colors.Add(i, "Green");
+                }
+                else
+                {
+                    foreach (int redNum in red_numbers)
+                    {
+                        if (i == redNum)
+                        {
+                            colors.Add(i, "Red");
+                        }
+                    }
+                    foreach (int blackNum in black_numbers)
+                    {
+                        if (i == blackNum)
+                        {
+                            colors.Add(i, "Black");
+                        }
+                    }
+                }
+            }
         }
     }
 }

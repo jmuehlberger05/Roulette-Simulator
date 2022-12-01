@@ -112,6 +112,35 @@ namespace Roulette_Simulator
         //build and render the chart
         void renderChart(Dictionary<int, double> spread)
         {
+            var scaling = new ColumnDefinition();
+            scaling.Width = new GridLength(20);
+            graphic.ColumnDefinitions.Add(scaling);
+
+            var scale = new Label()
+            {
+                Content = "2,7",
+                HorizontalAlignment = HorizontalAlignment.Left,
+                VerticalAlignment = VerticalAlignment.Bottom,
+                FontSize = 8,
+                Margin = new Thickness(0, 0,0, 128)
+            };
+            var scaleZero = new Label()
+            {
+                Content = "0",
+                HorizontalAlignment = HorizontalAlignment.Left,
+                VerticalAlignment = VerticalAlignment.Bottom,
+                FontSize = 8,
+                Margin = new Thickness(0, 0, 0, 0)
+            };
+
+            Grid.SetColumn(scale, 0);   Grid.SetColumn(scaleZero, 0);
+            Grid.SetRow(scale, 0);      Grid.SetRow(scaleZero, 1);
+            Grid.SetRowSpan(scale, 2);
+
+            graphic.Children.Add(scale);
+            graphic.Children.Add(scaleZero);
+
+
             for (int i = 0; i < 37; i++)
             {
                 // Add a new Column
@@ -139,11 +168,11 @@ namespace Roulette_Simulator
                 };
 
                 //select the right column and row to put in
-                Grid.SetColumn(Rect, i);
+                Grid.SetColumn(Rect, i+1);
                 Grid.SetRow(Rect, 0);
                 Grid.SetRowSpan(Rect, 2);
 
-                Grid.SetColumn(lb, i);
+                Grid.SetColumn(lb, i+1);
                 Grid.SetRow(lb, 2);
 
                 graphic.Children.Add(Rect);
@@ -163,7 +192,7 @@ namespace Roulette_Simulator
                 ToolTip = "2.7% - Perfect Distribution"
             };
 
-            Grid.SetColumn(Line, 0);
+            Grid.SetColumn(Line, 1);
             Grid.SetRow(Line, 0);
             Grid.SetColumnSpan(Line, 37);
             graphic.Children.Add(Line);
