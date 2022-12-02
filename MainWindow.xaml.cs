@@ -13,12 +13,14 @@ namespace Roulette_Simulator
     {
         //Initialise the bets class and the roulette wheel
         Bets opBet = new Bets();
+        Bets statBet = new Bets();
 
         //Initialise the main Window
         public MainWindow()
         {
             InitializeComponent();
             rb_winMode.IsChecked = true;
+            Sim_check.IsChecked = false;
         }
 
         //refresh the betting Listbox
@@ -35,18 +37,39 @@ namespace Roulette_Simulator
         //onClick function for the "SIM start" button -> starts the Wheelspin & calculates the profit
         void Simulate(object sender, RoutedEventArgs e)
         {
-            //Spin The Wheel
-            opBet.Spin();
+            // if single mode is active
+            if (!simWinmode)
+            {
+                //Spin The Wheel
+                opBet.Spin();
 
-            //Check all Properties for the current Number
-            opBet.CheckProperties();
+                //Check all Properties for the current Number
+                opBet.CheckProperties();
 
-            string output = "Number:\t" + opBet.Number + "\nColor:\t" + opBet.Color + "\n2 to 1:\t" + opBet.Row + "\nThrid:\t" + opBet.Third + "\nEven?\t" + opBet.Iseven + "\n19 to 36?\t" + opBet.Isupperhalf;
-            MessageBox.Show(output);
+                string output = "Number:\t" + opBet.Number + "\nColor:\t" + opBet.Color + "\n2 to 1:\t" + opBet.Row + "\nThrid:\t" + opBet.Third + "\nEven?\t" + opBet.Iseven + "\n19 to 36?\t" + opBet.Isupperhalf;
+                MessageBox.Show(output);
 
-            //Calculate the Profit & display it
-            double win = opBet.CalcGewinn();
-            winLabel.Content = win + "€";
+                //Calculate the Profit & display it
+                double win = opBet.CalcGewinn();
+                winLabel.Content = win + "€";
+            }
+            // if statistic winmode is active
+            else
+            {
+                double win = 0;
+                for (int i = 0; i < 1000; i++) 
+                {
+                    //Spin The Wheel
+                    opBet.Spin();
+
+                    //Check all Properties for the current Number
+                    opBet.CheckProperties();
+
+                    //Calculate the Profit & display it
+                    win += opBet.CalcGewinn();
+                }
+                winLabel.Content = win + "€";
+            }
         }
 
         //onClick function for every field on the table
@@ -204,7 +227,10 @@ namespace Roulette_Simulator
             //Calculate the spread
             var Numberspread = new Dictionary<int, double>();
             Numberspread = opBet.CalculateNumberspread(resolution_slider.Value);
+            if (simWinmode)
+            {
 
+            }
             //clear the old Graphic
             graphic.Children.Clear();
             graphic.ColumnDefinitions.Clear();
@@ -218,6 +244,26 @@ namespace Roulette_Simulator
         {
             if (simmode)
                 Slider_label.Content = "x = " + resolution_slider.Value.ToString();
+        }
+
+        //Boolean to check whether Profit Mode is active
+        bool simWinmode = false;
+        
+        //change Statistic mode to Profit
+        void Profit_Stat_Sim(object sender, RoutedEventArgs e)
+        {
+            if (!simWinmode)
+            {
+                windescr.Content = "Statistic Profit";
+                Sim_check.Opacity = 1;
+                simWinmode = true;
+            }
+            else
+            {
+                windescr.Content = "Profit";
+                Sim_check.Opacity = 0.8;
+                simWinmode = false;
+            }
         }
     }
 }
