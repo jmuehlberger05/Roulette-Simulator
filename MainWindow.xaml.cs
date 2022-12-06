@@ -15,6 +15,12 @@ namespace Roulette_Simulator
         Bets opBet = new Bets();
         Bets statBet = new Bets();
 
+        //Boolean to check which mode is currently open
+        bool simmode = false;
+
+        //Boolean to check whether Profit Mode is active
+        bool simWinmode = false;
+
         //Initialise the main Window
         public MainWindow()
         {
@@ -46,8 +52,9 @@ namespace Roulette_Simulator
                 //Check all Properties for the current Number
                 opBet.CheckProperties();
 
-                string output = "Number:\t" + opBet.Number + "\nColor:\t" + opBet.Color + "\n2 to 1:\t" + opBet.Row + "\nThrid:\t" + opBet.Third + "\nEven?\t" + opBet.Iseven + "\n19 to 36?\t" + opBet.Isupperhalf;
-                MessageBox.Show(output);
+                //show the output values of the simulation in the SimDialog Window
+                var winDialog = new SimDialog(opBet.Number, opBet.Color, opBet.Row, opBet.Third, opBet.Iseven, opBet.Isupperhalf);
+                winDialog.ShowDialog();
 
                 //Calculate the Profit & display it
                 double win = opBet.CalcGewinn();
@@ -56,19 +63,26 @@ namespace Roulette_Simulator
             // if statistic winmode is active
             else
             {
-                double win = 0;
-                for (int i = 0; i < 1000; i++) 
-                {
-                    //Spin The Wheel
-                    opBet.Spin();
+                if (int.TryParse(sim_input.Text, out int sim_resolution))
+                {    
+                    double win = 0;
+                    for (int i = 0; i < sim_resolution; i++)
+                    {
+                        //Spin The Wheel
+                        opBet.Spin();
 
-                    //Check all Properties for the current Number
-                    opBet.CheckProperties();
+                        //Check all Properties for the current Number
+                        opBet.CheckProperties();
 
-                    //Calculate the Profit & display it
-                    win += opBet.CalcGewinn();
+                        //Calculate the Profit & display it
+                        win += opBet.CalcGewinn();
+                        winLabel.Content = win + "€";
+                    }
                 }
-                winLabel.Content = win + "€";
+                else
+                {
+                    MessageBox.Show("Please enter a valid number");
+                }
             }
         }
 
@@ -97,9 +111,6 @@ namespace Roulette_Simulator
                 listBox_refresh();
             }
         }
-
-        //Boolean to check which mode is currently open
-        bool simmode = false;
 
         //onClick function to change the program mode   
         void changeMode(object sender, RoutedEventArgs e)
@@ -245,9 +256,6 @@ namespace Roulette_Simulator
             if (simmode)
                 Slider_label.Content = "x = " + resolution_slider.Value.ToString();
         }
-
-        //Boolean to check whether Profit Mode is active
-        bool simWinmode = false;
         
         //change Statistic mode to Profit
         void Profit_Stat_Sim(object sender, RoutedEventArgs e)
@@ -255,13 +263,18 @@ namespace Roulette_Simulator
             if (!simWinmode)
             {
                 windescr.Content = "Statistic Profit";
-                Sim_check.Opacity = 1;
+                sim_input.Text = "1000";
+                sim_input.IsReadOnly = false;
+                sim_input.BorderThickness = new Thickness(1);
+                sim_input.BorderBrush = Brushes.Gray;
                 simWinmode = true;
             }
             else
             {
                 windescr.Content = "Profit";
-                Sim_check.Opacity = 0.8;
+                sim_input.Text = "Statistic Sim";
+                sim_input.IsReadOnly = true;
+                sim_input.BorderBrush = Brushes.Transparent;
                 simWinmode = false;
             }
         }

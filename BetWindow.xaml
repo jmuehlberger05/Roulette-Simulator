@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Roulette_Simulator"
         mc:Ignorable="d"
-        Title="BetWindow" Height="450" Width="800" Background="#FFE5E5E5">
+        Title="Input Bet" Height="450" Width="800" Background="#FFE5E5E5">
     <Grid Margin="15">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1.5*" />
